@@ -80,6 +80,12 @@ class MainWindow(QMainWindow):
 
                 self.get_calcs(char_id, self.ui.cbbClass.currentData())
 
+                if not calc.get_gclass_restrictions(char, self.ui.cbbClass.currentData()):
+                    #print("INDISPONIVEL")
+                    self.ui.wdgClassCheck.setVisible(True)
+                else:
+                    self.ui.wdgClassCheck.setVisible(False)
+
     def select_gclass(self):
         gclass_id = self.ui.cbbClass.currentData()
 
@@ -95,6 +101,10 @@ class MainWindow(QMainWindow):
                 
                 StyleHelper.apply_glow(self.ui.lblClass, color=self.gclass_colors[gclass.color.name], blur_radius=15)
 
+                if not calc.get_gclass_restrictions(self.dbcontroller.get_character(self.ui.cbbChar.currentData()), self.ui.cbbClass.currentData()):
+                    self.ui.wdgClassCheck.setVisible(True)
+                else:
+                    self.ui.wdgClassCheck.setVisible(False)
 
     def load_icons(self, ranks: list):
         #icon (widget) list

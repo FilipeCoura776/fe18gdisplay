@@ -1,5 +1,5 @@
 from src.database.connection import SessionLocal
-from src.models.character import Character
+from src.models.character import Character, CharGender
 from src.models.gclass import GClass
 from src.controllers.db_func import DBController
 
@@ -66,3 +66,26 @@ def get_ranks(bitmask_val: int) -> list:
 
     print(active_skills)
     return active_skills
+
+
+gclass_restrictions = {
+        "Orchel": [5,13,14,15,16,24,28,29,30,31,32,37,41,45,46,47,48,51,58],
+        "Goliath": [5,13,14,15,16,24,28,29,30,31,32,37,41,45,46,47,48,51,58]
+    }
+
+def get_gclass_restrictions(char: Character, gclass_id: int) -> bool:
+    #could use some bitwise shenanigans but this is probably faster since there's only a few characters
+    restrictions = gclass_restrictions.get(char.name, [])
+
+
+    if gclass_id in restrictions:
+        return False
+    elif char.name == "Klapka" and gclass_id != 26:
+        return False
+    elif char.name == "Tahonia" and gclass_id != 38:
+        return False
+    elif char.gender == CharGender.M and (gclass_id in [16,47]):
+        return False
+
+    return True
+    

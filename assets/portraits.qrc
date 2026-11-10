@@ -77,5 +77,6 @@
         <file>icons/Cavalry.png</file>
         <file>icons/Armored.png</file>
         <file>icons/Flying.png</file>
+        <file>icons/red_x.png</file>
     </qresource> 
 </RCC> 

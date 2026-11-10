@@ -23,6 +23,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
+        MainWindow.setEnabled(True)
         MainWindow.resize(551, 644)
         MainWindow.setStyleSheet(u"background-color: rgb(18, 36, 40);")
         self.centralwidget = QWidget(MainWindow)
@@ -459,6 +460,11 @@ class Ui_MainWindow(object):
 "margin: 10px 0px;")
         self.line_12.setFrameShadow(QFrame.Shadow.Raised)
         self.line_12.setFrameShape(QFrame.Shape.HLine)
+        self.wdgClassCheck = QWidget(self.widget_5)
+        self.wdgClassCheck.setObjectName(u"wdgClassCheck")
+        self.wdgClassCheck.setEnabled(True)
+        self.wdgClassCheck.setGeometry(QRect(220, 110, 51, 51))
+        self.wdgClassCheck.setStyleSheet(u"image: url(:/icons/red_x.png);")
         self.lblName.raise_()
         self.lblTitle.raise_()
         self.lblTier.raise_()
@@ -466,6 +472,7 @@ class Ui_MainWindow(object):
         self.line_11.raise_()
         self.widget_7.raise_()
         self.line_12.raise_()
+        self.wdgClassCheck.raise_()
         self.lblName_2 = QLabel(self.widget)
         self.lblName_2.setObjectName(u"lblName_2")
         self.lblName_2.setGeometry(QRect(10, 490, 261, 31))
